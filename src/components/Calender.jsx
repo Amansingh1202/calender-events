@@ -8,11 +8,11 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  parse,
+  toDate,
   addMonths,
   subMonths,
 } from "date-fns";
-import "./Calender.css";
+import "../css/Calender.css";
 
 export default function Calender() {
   const [currentMonthValue, setCurrentMonth] = useState(new Date());
@@ -96,7 +96,7 @@ export default function Calender() {
                 : ""
             }`}
             key={day}
-            onClick={() => onDateClick(parse(cloneDay))}
+            onClick={() => onDateClick(toDate(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
