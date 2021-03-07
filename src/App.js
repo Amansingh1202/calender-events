@@ -3,10 +3,11 @@ import AddEvent from "./components/AddEvent.jsx";
 import "./App.css";
 
 function App() {
+  let events = [];
   return (
     <div>
-      <AddEvent />
-      <Calender />
+      <AddEvent events={events} />
+      <Calender events={events} />
     </div>
   );
 }

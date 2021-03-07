@@ -14,7 +14,7 @@ import {
 } from "date-fns";
 import "../css/Calender.css";
 
-export default function Calender() {
+export default function Calender({ event }) {
   const [currentMonthValue, setCurrentMonth] = useState(new Date());
   const [selectedDateValue, setSelectedDate] = useState(new Date());
 

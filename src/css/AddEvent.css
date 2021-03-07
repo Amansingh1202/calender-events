@@ -1,0 +1,51 @@
+.eventBody {
+  background-color: plum;
+  width: 30%;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+input {
+  width: 90%;
+  color: palevioletred;
+  padding: 3px;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+form input[type="text"] {
+  background-color: aliceblue;
+  border: none;
+  outline: none;
+}
+
+form input[type="text"]:focus {
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+label {
+  margin: 5px 0;
+  color: black;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+form button {
+  margin-top: 20px;
+  font-size: 1.1em;
+  padding: 5px 10px;
+  color: black;
+  font-weight: 500;
+  border: none;
+  border-radius: 3px;
+  margin-left: 35%;
+  background-color: greenyellow;
+}
+
+form button:hover {
+  color: white;
+  background-color: green;
+}
