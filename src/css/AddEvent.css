@@ -1,9 +1,23 @@
 .eventBody {
   background-color: plum;
-  width: 30%;
   padding: 20px;
   border-radius: 3px;
   margin: 10px;
+}
+
+.trigger-button {
+  background-color: yellowgreen;
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  font-size: 1.1em;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.trigger-button:hover {
+  background-color: green;
+  border: none;
 }
 
 input {
