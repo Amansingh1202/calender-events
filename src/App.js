@@ -1,13 +1,14 @@
+import React, { useState } from "react";
 import Calender from "./components/Calender.jsx";
 import AddEvent from "./components/AddEvent.jsx";
 import "./App.css";
 
 function App() {
-  let events = [];
+  const [events, setEvents] = useState([]);
   return (
     <div>
-      <AddEvent events={events} />
-      <Calender events={events} />
+      <AddEvent events={events} setEvents={setEvents} />
+      <Calender events={events} setEvents={setEvents} />
     </div>
   );
 }

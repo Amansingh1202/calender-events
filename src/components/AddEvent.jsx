@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SketchPicker } from "react-color";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -10,9 +10,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddEvent({ events }) {
+export default function AddEvent({ events, setEvents }) {
   const [color, setColor] = useState("#0000FF");
   const [showevent, setShowEvent] = useState("no");
+
+  useEffect(() => {
+    setEvents(JSON.parse(localStorage.getItem("events")) || []);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("events", JSON.stringify(events));
+  }, [events]);
 
   const triggerAddTripState = () => {
     if (showevent === "no") {
@@ -34,20 +42,21 @@ export default function AddEvent({ events }) {
       console.log("Enter value");
     } else {
       const eventInfo = {
+        id: Date.now(),
         eventName: eventName.value,
         date: date.value,
         color: color,
       };
-      console.log(eventInfo);
-      events.push(eventInfo);
+      setEvents((oldArray) => [...oldArray, eventInfo]);
       eventName.value = "";
       date.value = "";
     }
   };
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid spacing={3}>
+      <Grid>
         <Grid item md={2} lg={4}></Grid>
         <Grid item md={10} lg={4}>
           <div>
