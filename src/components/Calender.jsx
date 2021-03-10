@@ -15,7 +15,6 @@ import "../css/Calender.css";
 
 export default function Calender({ events, setEvents }) {
   const [currentMonthValue, setCurrentMonth] = useState(new Date());
-  const [selectedDateValue, setSelectedDate] = useState(new Date());
 
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonthValue, 1));
@@ -64,7 +63,6 @@ export default function Calender({ events, setEvents }) {
 
   const renderCells = () => {
     const currentMonth = currentMonthValue;
-    const selectedDate = selectedDateValue;
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
     const startDate = startOfWeek(monthStart);
@@ -87,11 +85,7 @@ export default function Calender({ events, setEvents }) {
         days.push(
           <div
             className={`col cell ${
-              !isSameMonth(day, monthStart)
-                ? "disabled"
-                : isSameDay(day, selectedDate)
-                ? "selected"
-                : ""
+              !isSameMonth(day, monthStart) ? "disabled" : ""
             }`}
             key={day}
           >
