@@ -8,19 +8,14 @@ import {
   endOfMonth,
   isSameDay,
   isSameMonth,
-  toDate,
   addMonths,
   subMonths,
 } from "date-fns";
 import "../css/Calender.css";
 
-export default function Calender({ event, setEvents }) {
+export default function Calender({ events, setEvents }) {
   const [currentMonthValue, setCurrentMonth] = useState(new Date());
   const [selectedDateValue, setSelectedDate] = useState(new Date());
-
-  const onDateClick = (day) => {
-    setSelectedDate(day);
-  };
 
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonthValue, 1));
@@ -85,7 +80,10 @@ export default function Calender({ event, setEvents }) {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
-        const cloneDay = day;
+        const ComparisonDate = new Date(day).setHours(0, 0, 0, 0);
+        const eventsOnDay = events.filter(
+          (e) => e.dateValue === ComparisonDate
+        );
         days.push(
           <div
             className={`col cell ${
@@ -96,9 +94,13 @@ export default function Calender({ event, setEvents }) {
                 : ""
             }`}
             key={day}
-            onClick={() => onDateClick(toDate(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
+            {eventsOnDay.map((e) => (
+              <li key={e.id} style={{ color: e.color }}>
+                {e.eventName}
+              </li>
+            ))}
             <span className="bg">{formattedDate}</span>
           </div>
         );

@@ -44,7 +44,7 @@ export default function AddEvent({ events, setEvents }) {
       const eventInfo = {
         id: Date.now(),
         eventName: eventName.value,
-        date: date.value,
+        dateValue: new Date(date.value).setHours(0, 0, 0, 0),
         color: color,
       };
       setEvents((oldArray) => [...oldArray, eventInfo]);
