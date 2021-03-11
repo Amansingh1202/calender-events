@@ -1,11 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
-li {
+.eventsPart {
   text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  list-style-type: square;
+  font-weight: 400;
+  width: 190px;
+  padding: 6px;
+}
+
+.deleteButton {
   font-size: 1.2em;
-  list-style-type: "> ";
-  font-weight: 600;
+  padding: 6px;
 }
 
 .icon {
@@ -221,8 +229,7 @@ main {
   letter-spacing: -0.07em;
 }
 
-.calendar .body .cell:hover .bg,
-.calendar .body .selected .bg {
+.calendar .body .cell:hover .bg {
   opacity: 0.05;
   transition: 0.5s ease-in;
 }

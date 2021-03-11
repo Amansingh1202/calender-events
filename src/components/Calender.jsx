@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   format,
   startOfWeek,
@@ -6,7 +6,6 @@ import {
   startOfMonth,
   endOfWeek,
   endOfMonth,
-  isSameDay,
   isSameMonth,
   addMonths,
   subMonths,
@@ -14,6 +13,10 @@ import {
 import "../css/Calender.css";
 
 export default function Calender({ events, setEvents }) {
+  useEffect(() => {
+    localStorage.setItem("events", JSON.stringify(events));
+  }, [events]);
+
   const [currentMonthValue, setCurrentMonth] = useState(new Date());
 
   const nextMonth = () => {
@@ -22,6 +25,11 @@ export default function Calender({ events, setEvents }) {
 
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonthValue, 1));
+  };
+
+  const removeEvent = (deleteId) => {
+    events = events.filter((e) => e.id !== deleteId);
+    setEvents(events);
   };
 
   const renderHeader = () => {
@@ -91,9 +99,21 @@ export default function Calender({ events, setEvents }) {
           >
             <span className="number">{formattedDate}</span>
             {eventsOnDay.map((e) => (
-              <li key={e.id} style={{ color: e.color }}>
-                {e.eventName}
-              </li>
+              <div key={e.id}>
+                <span
+                  className="eventsPart"
+                  style={{ backgroundColor: e.color, color: "white" }}
+                >
+                  {e.eventName}
+                </span>
+                <span
+                  className="deleteButton"
+                  style={{ backgroundColor: e.color, color: "white" }}
+                  onClick={() => removeEvent(e.id)}
+                >
+                  X
+                </span>
+              </div>
             ))}
             <span className="bg">{formattedDate}</span>
           </div>

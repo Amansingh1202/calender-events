@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AddEvent({ events, setEvents }) {
   const [color, setColor] = useState("#0000FF");
   const [showevent, setShowEvent] = useState("no");
+  var error = "";
 
   useEffect(() => {
     setEvents(JSON.parse(localStorage.getItem("events")) || []);
@@ -39,7 +40,7 @@ export default function AddEvent({ events, setEvents }) {
     const eventName = document.getElementById("eventName");
     const date = document.getElementById("date");
     if (eventName.value === "" || date.value === "") {
-      console.log("Enter value");
+      alert("Please fill all the Event name and Date");
     } else {
       const eventInfo = {
         id: Date.now(),
